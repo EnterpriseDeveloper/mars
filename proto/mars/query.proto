@@ -3,13 +3,70 @@ package VoroshilovMax.mars.mars;
 
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
+import "mars/create_priv_events.proto";
+import "mars/create_pub_events.proto";
 // this line is used by starport scaffolding # 1
+import "gogoproto/gogo.proto";
 
 option go_package = "github.com/VoroshilovMax/mars/x/mars/types";
 
 // Query defines the gRPC querier service.
 service Query {
-    // this line is used by starport scaffolding # 2
+    // Queries a createPrivEvents by id.
+	rpc CreatePrivEvents(QueryGetCreatePrivEventsRequest) returns (QueryGetCreatePrivEventsResponse) {
+		option (google.api.http).get = "/VoroshilovMax/mars/mars/createPrivEvents/{id}";
+	}
+
+	// Queries a list of createPrivEvents items.
+	rpc CreatePrivEventsAll(QueryAllCreatePrivEventsRequest) returns (QueryAllCreatePrivEventsResponse) {
+		option (google.api.http).get = "/VoroshilovMax/mars/mars/createPrivEvents";
+	}
+
+// Queries a createPubEvents by id.
+	rpc CreatePubEvents(QueryGetCreatePubEventsRequest) returns (QueryGetCreatePubEventsResponse) {
+		option (google.api.http).get = "/VoroshilovMax/mars/mars/createPubEvents/{id}";
+	}
+
+	// Queries a list of createPubEvents items.
+	rpc CreatePubEventsAll(QueryAllCreatePubEventsRequest) returns (QueryAllCreatePubEventsResponse) {
+		option (google.api.http).get = "/VoroshilovMax/mars/mars/createPubEvents";
+	}
+
+// this line is used by starport scaffolding # 2
+}
+
+message QueryGetCreatePrivEventsRequest {
+	uint64 id = 1;
+}
+
+message QueryGetCreatePrivEventsResponse {
+	CreatePrivEvents CreatePrivEvents = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllCreatePrivEventsRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllCreatePrivEventsResponse {
+	repeated CreatePrivEvents CreatePrivEvents = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetCreatePubEventsRequest {
+	uint64 id = 1;
+}
+
+message QueryGetCreatePubEventsResponse {
+	CreatePubEvents CreatePubEvents = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllCreatePubEventsRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllCreatePubEventsResponse {
+	repeated CreatePubEvents CreatePubEvents = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
 // this line is used by starport scaffolding # 3

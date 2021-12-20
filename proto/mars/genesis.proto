@@ -1,11 +1,18 @@
 syntax = "proto3";
 package VoroshilovMax.mars.mars;
 
+import "mars/create_priv_events.proto";
+import "mars/create_pub_events.proto";
 // this line is used by starport scaffolding # genesis/proto/import
+import "gogoproto/gogo.proto";
 
 option go_package = "github.com/VoroshilovMax/mars/x/mars/types";
 
 // GenesisState defines the mars module's genesis state.
 message GenesisState {
-    // this line is used by starport scaffolding # genesis/proto/state
+    repeated CreatePrivEvents createPrivEventsList = 1 [(gogoproto.nullable) = false];
+  uint64 createPrivEventsCount = 2;
+  repeated CreatePubEvents createPubEventsList = 3 [(gogoproto.nullable) = false];
+  uint64 createPubEventsCount = 4;
+  // this line is used by starport scaffolding # genesis/proto/state
 }

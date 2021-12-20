@@ -12501,6 +12501,384 @@ paths:
                         }
       tags:
         - Query
+  /VoroshilovMax/mars/mars/createPrivEvents:
+    get:
+      summary: Queries a list of createPrivEvents items.
+      operationId: VoroshilovMaxMarsMarsCreatePrivEventsAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              CreatePrivEvents:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uint64
+                    privId:
+                      type: string
+                    question:
+                      type: string
+                    answers:
+                      type: string
+                    winner:
+                      type: string
+                    loser:
+                      type: string
+                    creator:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  nextKey:
+                    type: string
+                    format: byte
+                    title: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.countTotal
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  '/VoroshilovMax/mars/mars/createPrivEvents/{id}':
+    get:
+      summary: Queries a createPrivEvents by id.
+      operationId: VoroshilovMaxMarsMarsCreatePrivEvents
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              CreatePrivEvents:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uint64
+                  privId:
+                    type: string
+                  question:
+                    type: string
+                  answers:
+                    type: string
+                  winner:
+                    type: string
+                  loser:
+                    type: string
+                  creator:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
+  /VoroshilovMax/mars/mars/createPubEvents:
+    get:
+      summary: Queries a list of createPubEvents items.
+      operationId: VoroshilovMaxMarsMarsCreatePubEventsAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              CreatePubEvents:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uint64
+                    pubId:
+                      type: string
+                    question:
+                      type: string
+                    answers:
+                      type: string
+                    premAmount:
+                      type: string
+                    startTime:
+                      type: string
+                    endTime:
+                      type: string
+                    expertAmount:
+                      type: string
+                    creator:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  nextKey:
+                    type: string
+                    format: byte
+                    title: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.countTotal
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  '/VoroshilovMax/mars/mars/createPubEvents/{id}':
+    get:
+      summary: Queries a createPubEvents by id.
+      operationId: VoroshilovMaxMarsMarsCreatePubEvents
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              CreatePubEvents:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uint64
+                  pubId:
+                    type: string
+                  question:
+                    type: string
+                  answers:
+                    type: string
+                  premAmount:
+                    type: string
+                  startTime:
+                    type: string
+                  endTime:
+                    type: string
+                  expertAmount:
+                    type: string
+                  creator:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
 definitions:
   cosmos.authz.v1beta1.Grant:
     type: object
@@ -19815,3 +20193,209 @@ definitions:
       and
 
       freezing clients
+  VoroshilovMax.mars.mars.CreatePrivEvents:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+      privId:
+        type: string
+      question:
+        type: string
+      answers:
+        type: string
+      winner:
+        type: string
+      loser:
+        type: string
+      creator:
+        type: string
+  VoroshilovMax.mars.mars.CreatePubEvents:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+      pubId:
+        type: string
+      question:
+        type: string
+      answers:
+        type: string
+      premAmount:
+        type: string
+      startTime:
+        type: string
+      endTime:
+        type: string
+      expertAmount:
+        type: string
+      creator:
+        type: string
+  VoroshilovMax.mars.mars.MsgCreateCreatePrivEventsResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+  VoroshilovMax.mars.mars.MsgCreateCreatePubEventsResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+  VoroshilovMax.mars.mars.MsgDeleteCreatePrivEventsResponse:
+    type: object
+  VoroshilovMax.mars.mars.MsgDeleteCreatePubEventsResponse:
+    type: object
+  VoroshilovMax.mars.mars.MsgUpdateCreatePrivEventsResponse:
+    type: object
+  VoroshilovMax.mars.mars.MsgUpdateCreatePubEventsResponse:
+    type: object
+  VoroshilovMax.mars.mars.QueryAllCreatePrivEventsResponse:
+    type: object
+    properties:
+      CreatePrivEvents:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uint64
+            privId:
+              type: string
+            question:
+              type: string
+            answers:
+              type: string
+            winner:
+              type: string
+            loser:
+              type: string
+            creator:
+              type: string
+      pagination:
+        type: object
+        properties:
+          nextKey:
+            type: string
+            format: byte
+            title: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  VoroshilovMax.mars.mars.QueryAllCreatePubEventsResponse:
+    type: object
+    properties:
+      CreatePubEvents:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uint64
+            pubId:
+              type: string
+            question:
+              type: string
+            answers:
+              type: string
+            premAmount:
+              type: string
+            startTime:
+              type: string
+            endTime:
+              type: string
+            expertAmount:
+              type: string
+            creator:
+              type: string
+      pagination:
+        type: object
+        properties:
+          nextKey:
+            type: string
+            format: byte
+            title: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  VoroshilovMax.mars.mars.QueryGetCreatePrivEventsResponse:
+    type: object
+    properties:
+      CreatePrivEvents:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uint64
+          privId:
+            type: string
+          question:
+            type: string
+          answers:
+            type: string
+          winner:
+            type: string
+          loser:
+            type: string
+          creator:
+            type: string
+  VoroshilovMax.mars.mars.QueryGetCreatePubEventsResponse:
+    type: object
+    properties:
+      CreatePubEvents:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uint64
+          pubId:
+            type: string
+          question:
+            type: string
+          answers:
+            type: string
+          premAmount:
+            type: string
+          startTime:
+            type: string
+          endTime:
+            type: string
+          expertAmount:
+            type: string
+          creator:
+            type: string

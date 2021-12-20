@@ -5,6 +5,7 @@ package types
 
 import (
 	fmt "fmt"
+	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
@@ -24,6 +25,10 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // GenesisState defines the mars module's genesis state.
 type GenesisState struct {
+	CreatePrivEventsList  []CreatePrivEvents `protobuf:"bytes,1,rep,name=createPrivEventsList,proto3" json:"createPrivEventsList"`
+	CreatePrivEventsCount uint64             `protobuf:"varint,2,opt,name=createPrivEventsCount,proto3" json:"createPrivEventsCount,omitempty"`
+	CreatePubEventsList   []CreatePubEvents  `protobuf:"bytes,3,rep,name=createPubEventsList,proto3" json:"createPubEventsList"`
+	CreatePubEventsCount  uint64             `protobuf:"varint,4,opt,name=createPubEventsCount,proto3" json:"createPubEventsCount,omitempty"`
 }
 
 func (m *GenesisState) Reset()         { *m = GenesisState{} }
@@ -59,6 +64,34 @@ func (m *GenesisState) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GenesisState proto.InternalMessageInfo
 
+func (m *GenesisState) GetCreatePrivEventsList() []CreatePrivEvents {
+	if m != nil {
+		return m.CreatePrivEventsList
+	}
+	return nil
+}
+
+func (m *GenesisState) GetCreatePrivEventsCount() uint64 {
+	if m != nil {
+		return m.CreatePrivEventsCount
+	}
+	return 0
+}
+
+func (m *GenesisState) GetCreatePubEventsList() []CreatePubEvents {
+	if m != nil {
+		return m.CreatePubEventsList
+	}
+	return nil
+}
+
+func (m *GenesisState) GetCreatePubEventsCount() uint64 {
+	if m != nil {
+		return m.CreatePubEventsCount
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*GenesisState)(nil), "VoroshilovMax.mars.mars.GenesisState")
 }
@@ -66,16 +99,25 @@ func init() {
 func init() { proto.RegisterFile("mars/genesis.proto", fileDescriptor_8d3e323e2ee05ac6) }
 
 var fileDescriptor_8d3e323e2ee05ac6 = []byte{
-	// 133 bytes of a gzipped FileDescriptorProto
+	// 278 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xca, 0x4d, 0x2c, 0x2a,
 	0xd6, 0x4f, 0x4f, 0xcd, 0x4b, 0x2d, 0xce, 0x2c, 0xd6, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x12,
 	0x0f, 0xcb, 0x2f, 0xca, 0x2f, 0xce, 0xc8, 0xcc, 0xc9, 0x2f, 0xf3, 0x4d, 0xac, 0xd0, 0x03, 0xa9,
-	0x00, 0x13, 0x4a, 0x7c, 0x5c, 0x3c, 0xee, 0x10, 0x95, 0xc1, 0x25, 0x89, 0x25, 0xa9, 0x4e, 0x2e,
-	0x27, 0x1e, 0xc9, 0x31, 0x5e, 0x78, 0x24, 0xc7, 0xf8, 0xe0, 0x91, 0x1c, 0xe3, 0x84, 0xc7, 0x72,
-	0x0c, 0x17, 0x1e, 0xcb, 0x31, 0xdc, 0x78, 0x2c, 0xc7, 0x10, 0xa5, 0x95, 0x9e, 0x59, 0x92, 0x51,
-	0x9a, 0xa4, 0x97, 0x9c, 0x9f, 0xab, 0x8f, 0x62, 0x9a, 0x3e, 0xd8, 0x3e, 0x28, 0x55, 0x52, 0x59,
-	0x90, 0x5a, 0x9c, 0xc4, 0x06, 0xb6, 0xd5, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x09, 0x75, 0xa5,
-	0xe2, 0x8b, 0x00, 0x00, 0x00,
+	0x00, 0x13, 0x52, 0xb2, 0x60, 0xc5, 0xc9, 0x45, 0xa9, 0x89, 0x25, 0xa9, 0xf1, 0x05, 0x45, 0x99,
+	0x65, 0xf1, 0xa9, 0x65, 0xa9, 0x79, 0x25, 0x50, 0x7d, 0x52, 0x32, 0x28, 0xd2, 0xa5, 0x49, 0xa8,
+	0xb2, 0x22, 0xe9, 0xf9, 0xe9, 0xf9, 0x60, 0xa6, 0x3e, 0x88, 0x05, 0x11, 0x55, 0xda, 0xcf, 0xc4,
+	0xc5, 0xe3, 0x0e, 0xb1, 0x3d, 0xb8, 0x24, 0xb1, 0x24, 0x55, 0x28, 0x99, 0x4b, 0x04, 0x62, 0x42,
+	0x40, 0x51, 0x66, 0x99, 0x2b, 0xd8, 0x00, 0x9f, 0xcc, 0xe2, 0x12, 0x09, 0x46, 0x05, 0x66, 0x0d,
+	0x6e, 0x23, 0x4d, 0x3d, 0x1c, 0x6e, 0xd3, 0x73, 0x46, 0xd3, 0xe4, 0xc4, 0x72, 0xe2, 0x9e, 0x3c,
+	0x43, 0x10, 0x56, 0xc3, 0x84, 0x4c, 0xb8, 0x44, 0xd1, 0xc5, 0x9d, 0xf3, 0x4b, 0xf3, 0x4a, 0x24,
+	0x98, 0x14, 0x18, 0x35, 0x58, 0x82, 0xb0, 0x4b, 0x0a, 0x25, 0x70, 0x09, 0x43, 0x25, 0x4a, 0x93,
+	0x90, 0x5c, 0xc6, 0x0c, 0x76, 0x99, 0x06, 0x21, 0x97, 0xc1, 0xf4, 0x40, 0x1d, 0x86, 0xcd, 0x28,
+	0x21, 0x23, 0xb8, 0xe7, 0x61, 0xc2, 0x10, 0x67, 0xb1, 0x80, 0x9d, 0x85, 0x55, 0xce, 0xc9, 0xe5,
+	0xc4, 0x23, 0x39, 0xc6, 0x0b, 0x8f, 0xe4, 0x18, 0x1f, 0x3c, 0x92, 0x63, 0x9c, 0xf0, 0x58, 0x8e,
+	0xe1, 0xc2, 0x63, 0x39, 0x86, 0x1b, 0x8f, 0xe5, 0x18, 0xa2, 0xb4, 0xd2, 0x33, 0x4b, 0x32, 0x4a,
+	0x93, 0xf4, 0x92, 0xf3, 0x73, 0xf5, 0x51, 0x1c, 0xa7, 0x0f, 0x8e, 0x28, 0x28, 0x55, 0x52, 0x59,
+	0x90, 0x5a, 0x9c, 0xc4, 0x06, 0x8e, 0x0e, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0x3d, 0x80,
+	0x49, 0xc9, 0x10, 0x02, 0x00, 0x00,
 }
 
 func (m *GenesisState) Marshal() (dAtA []byte, err error) {
@@ -98,6 +140,44 @@ func (m *GenesisState) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
+	if m.CreatePubEventsCount != 0 {
+		i = encodeVarintGenesis(dAtA, i, uint64(m.CreatePubEventsCount))
+		i--
+		dAtA[i] = 0x20
+	}
+	if len(m.CreatePubEventsList) > 0 {
+		for iNdEx := len(m.CreatePubEventsList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.CreatePubEventsList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x1a
+		}
+	}
+	if m.CreatePrivEventsCount != 0 {
+		i = encodeVarintGenesis(dAtA, i, uint64(m.CreatePrivEventsCount))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.CreatePrivEventsList) > 0 {
+		for iNdEx := len(m.CreatePrivEventsList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.CreatePrivEventsList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -118,6 +198,24 @@ func (m *GenesisState) Size() (n int) {
 	}
 	var l int
 	_ = l
+	if len(m.CreatePrivEventsList) > 0 {
+		for _, e := range m.CreatePrivEventsList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if m.CreatePrivEventsCount != 0 {
+		n += 1 + sovGenesis(uint64(m.CreatePrivEventsCount))
+	}
+	if len(m.CreatePubEventsList) > 0 {
+		for _, e := range m.CreatePubEventsList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if m.CreatePubEventsCount != 0 {
+		n += 1 + sovGenesis(uint64(m.CreatePubEventsCount))
+	}
 	return n
 }
 
@@ -156,6 +254,112 @@ func (m *GenesisState) Unmarshal(dAtA []byte) error {
 			return fmt.Errorf("proto: GenesisState: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CreatePrivEventsList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CreatePrivEventsList = append(m.CreatePrivEventsList, CreatePrivEvents{})
+			if err := m.CreatePrivEventsList[len(m.CreatePrivEventsList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CreatePrivEventsCount", wireType)
+			}
+			m.CreatePrivEventsCount = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CreatePrivEventsCount |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CreatePubEventsList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CreatePubEventsList = append(m.CreatePubEventsList, CreatePubEvents{})
+			if err := m.CreatePubEventsList[len(m.CreatePubEventsList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CreatePubEventsCount", wireType)
+			}
+			m.CreatePubEventsCount = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CreatePubEventsCount |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
 		default:
 			iNdEx = preIndex
 			skippy, err := skipGenesis(dAtA[iNdEx:])

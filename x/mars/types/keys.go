@@ -20,3 +20,13 @@ const (
 func KeyPrefix(p string) []byte {
 	return []byte(p)
 }
+
+const (
+	CreatePrivEventsKey      = "CreatePrivEvents-value-"
+	CreatePrivEventsCountKey = "CreatePrivEvents-count-"
+)
+
+const (
+	CreatePubEventsKey      = "CreatePubEvents-value-"
+	CreatePubEventsCountKey = "CreatePubEvents-count-"
+)

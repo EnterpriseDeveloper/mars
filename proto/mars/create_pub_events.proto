@@ -1,0 +1,19 @@
+syntax = "proto3";
+package VoroshilovMax.mars.mars;
+
+option go_package = "github.com/VoroshilovMax/mars/x/mars/types";
+
+import "gogoproto/gogo.proto";
+
+
+message CreatePubEvents {
+  uint64 id = 1;
+  string pubId = 2; 
+  string question = 3; 
+  string answers = 4; 
+  string premAmount = 5; 
+  string startTime = 6; 
+  string endTime = 7; 
+  string expertAmount = 8; 
+  string creator = 9;
+}

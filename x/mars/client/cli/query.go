@@ -24,6 +24,10 @@ func GetQueryCmd(queryRoute string) *cobra.Command {
 		RunE:                       client.ValidateCmd,
 	}
 
+	cmd.AddCommand(CmdListCreatePrivEvents())
+	cmd.AddCommand(CmdShowCreatePrivEvents())
+	cmd.AddCommand(CmdListCreatePubEvents())
+	cmd.AddCommand(CmdShowCreatePubEvents())
 	// this line is used by starport scaffolding # 1
 
 	return cmd
